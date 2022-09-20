@@ -1,4 +1,4 @@
-//cerner_2^5_2022
+//"cerner_2^5_2022" "cerner_2tothe5th_2022"
 
 const clockWise = (matrix) => {
     for (let row = 0; row < matrix.length; row++) {
