@@ -1,4 +1,4 @@
-//cerner_2^5_2022
+//"cerner_2tothe5th_2022"
 
 // Infinite functions is a concept in js, where we can pass n number of arguments using spread operator
 
