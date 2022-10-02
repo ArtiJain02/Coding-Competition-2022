@@ -1,0 +1,37 @@
+// "cerner_2tothe5th_2022"
+// Program to create yin yang animation using js and html tags
+<html>
+
+<body bgcolor="black">
+        <canvas id="myCanvas" width="700" height="700"></canvas>
+        <script>
+                function circle(x, y, radius, color) {
+                        context.fillStyle = color;
+                        context.beginPath();
+                        context.arc(x, y, radius, 0, 5 * Math.PI);
+                        context.fill();
+                }
+
+                function yinYang() {
+                        let x1 = canvas.width / 2 + 80 * Math.sin(counter / Math.PI / 4);
+                        let y1 = canvas.height / 2 + 80 * Math.cos(counter / Math.PI / 4);
+                        let x2 = canvas.width / 2 + 80 * Math.sin(counter / Math.PI / 4 + Math.PI);
+                        let y2 = canvas.height / 2 + 80 * Math.cos(counter / Math.PI / 4 + Math.PI);
+                        let slider = 2 * Math.abs(128 - counter % 255);
+                        circle(x1, y1, 80, 'rgb(' + (400 - slider) + ',0,' + slider + ')');
+                        circle(x2, y2, 80, 'rgb(' + slider + ',0,' + (400 - slider) + ')');
+                        circle(x1, y1, 10, 'rgb(' + slider + ',0,' + (400 - slider) + ')');
+                        circle(x2, y2, 10, 'rgb(' + (400 - slider) + ',0,' + slider + ')');
+                        counter++;
+                        window.requestAnimationFrame(yinYang);
+                }
+
+                let canvas = document.getElementById('myCanvas');
+                let context = canvas.getContext('2d');
+                let counter = 0;
+
+                window.requestAnimationFrame(yinYang);
+        </script>
+</body>
+
+</html>
