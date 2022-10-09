@@ -1,0 +1,32 @@
+//"cerner_2tothe5th_2022"
+<html>
+<body style='background-color:black'>
+    <canvas id="myCanvas" width="5000" height="500"></canvas><br>
+    <script>
+        const height = 80;
+        const width = 100;
+        let fire = new Array(width * height).fill(0);
+        let context = document.getElementById('myCanvas').getContext('2d');
+        window.requestAnimationFrame(burningEffect);
+        function burningEffect() {
+            for (let i = 0; i < width; i++) fire[i + width] = Math.random() * 255; // randomize the 2nd row from the bottom
+
+            for (let y = height; y > 1; y--)
+                for (let x = 0; x < width; x++) {
+                    let i = y * width + x;   // convert the x and y coordinates to the array index
+                    fire[i] = Math.floor((                // add the cell values:
+                        fire[(y - 1) * width + (x - 1 + width) % width] + fire[(y - 1) * width + (x + width) % width] +
+                        fire[(y - 1) * width + (x + 1 + width) % width] + fire[(y - 2) * width + (x + width) % width]) / 4.04);
+                } // division to lower the value as the fire goes up
+
+            for (let i = width * 4; i < width * height; i++) {
+                context.beginPath();
+                context.rect((i % width) * 10, (height - Math.floor(i / width)) * 10, 10, 10);
+                context.fillStyle = 'rgb(' + fire[i] + ',0,0)'; // the red component of the RGB color is the value of the cell.
+                context.fill();
+            }
+            window.requestAnimationFrame(burningEffect);
+        }
+    </script>
+</body>
+</html>
