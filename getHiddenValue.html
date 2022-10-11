@@ -1,0 +1,23 @@
+<!-- "cerner_2tothe5th_2022" -->
+<!--Program to get hidden value in javascript -->
+<html>
+
+<body>
+   <!-- <p>This are two ways to get hidden value </p> -->
+   <script type="text/javascript">
+      function getHiddenInformation() {
+         alert(document.getElementById('associateId').value);
+         alert(document.formName.elements['associateName'].value);
+      }
+   </script>
+
+   <h1>Get Hidden value in javascript</h1>
+   <form name="formName">
+      <input type=hidden id="associateId" name="associateName" value="Associate works as a spy" />
+
+      <input type=button value="Get Hidden value" onclick="getHiddenInformation()" />
+   </form>
+
+</body>
+
+</html>
