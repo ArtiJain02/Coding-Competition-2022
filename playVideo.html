@@ -1,0 +1,25 @@
+<!--"cerner_2tothe5th_2022"-->
+<!--Program to play video using js-->
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h2>Click to play and pause the video</h2>
+  <button onclick="playVideo()" type="button">Play the video</button>
+  <button onclick="pauseVideo()" type="button">Pause the video</button><br>
+  <video id="videoId" width="400" height="200">
+    <source src="xyz.mp4" type="video/mp4">
+    Sorry, your browser does not support HTML5 video.
+  </video>
+  <script>
+    var myVideo = document.getElementById("videoId");
+    function playVideo() {
+      myVideo.play();
+    }
+    function pauseVideo() {
+      myVideo.pause();
+    } 
+  </script>
+</body>
+
+</html>
