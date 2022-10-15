@@ -1,0 +1,34 @@
+<!--"cerner_2tothe5th_2022"-->
+<!-- Debouncing is a practice for improving browser performance by skipping a few repetitive executions of a piece of code during a given timeframe-->
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Debouncing in JS</h2>
+    <button id="debouncing">
+        Press the Button
+    </button>
+    <script>
+        var button = document.getElementById("debouncing");
+        const debouncing = (method, wait, immediate) => {
+            var timeout;
+            return function executedFunction() {
+                var cont = this;
+                var argument = arguments;
+                var later = function () {
+                    timeout = null;
+                    if (!immediate) method.apply(cont, argument);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) method.apply(cont, argument);
+            };
+        };
+        button.addEventListener('click', debouncing(() => {
+            alert("You will see this message after 2 seconds, no matter how many times you press the button")
+        }, 2000));   
+    </script>
+</body>
+
+</html>
